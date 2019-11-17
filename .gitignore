@@ -1,0 +1,10 @@
+
+node_modules
+
+/FrontEnd/.firebase/
+/FrontEnd/functions/
+/FrontEnd/__sapper__/
+/FrontEnd/cypress/
+
+/BackEnd/__sapper__
+
