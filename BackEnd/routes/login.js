@@ -12,7 +12,7 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 
     User.findOne({
         username: String(req.body.username).toLowerCase(),
-        password: String(req.body.password).toLowerCase()
+        password: req.body.password
     }, (err, person) => {
 
         let response = {

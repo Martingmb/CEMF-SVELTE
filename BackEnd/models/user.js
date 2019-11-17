@@ -8,7 +8,7 @@ const options = {
 
 var UserSchema = new Schema({
     username: { type: String, unique: true, lowercase: true, required: true, trim: true },
-    password: { type: String, unique: false, lowercase: true, required: true, trim: true },
+    password: { type: String, unique: false, required: true, trim: true },
     name: { type: String, unique: false, required: true, trim: false },
     title: { type: String, unique: false, required: false, trim: false },
     type: { type: String, required: false },
