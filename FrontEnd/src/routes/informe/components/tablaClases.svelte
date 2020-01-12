@@ -59,6 +59,20 @@
 
         for (let index = 0; index < aseo.length; index++) {
             const element = aseo[index];
+            console.log(clases[element.clase], "KEY: ", element.clase);
+
+            if(clases[element.clase] == undefined) {
+                clases[element.clase] = {
+                    nombre: element.clase,
+                    asistencia: 0,
+                    ofrenda: 0,
+                    aseo: 0,
+                    biblias: 0,
+                    expositores: 0,
+                    capitulos: 0,
+                    visitantes: 0
+                }
+            }
 
             clases[element.clase].aseo += Number(element.monto.$numberDecimal);
 

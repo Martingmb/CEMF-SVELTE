@@ -102,7 +102,7 @@
 {#if loading}
 <div class="field is-grouped is-grouped-centered">
         <div class="control">
-            <a class="button is-large is-rounded is-loading">Loading</a>
+            <a href="." class="button is-large is-rounded is-loading">Loading</a>
         </div>
 </div>
 {:else}

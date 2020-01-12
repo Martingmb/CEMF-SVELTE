@@ -21,6 +21,7 @@
                 return Response.json();
             }
             }).then(data => {
+                console.log("OFRENDA: ", data);
                 dataOfrenda = data;
             })
 
@@ -29,6 +30,7 @@
                 return Response.json();
             }
         }).then(data => {
+            console.log("ASEO: ", data);
             dataAseo = data;
         })
     })

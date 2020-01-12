@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const router = express();
+const http = require('http').Server(router);
+const io = require('socket.io').listen(http);
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const LocalStrategy = require('passport-local').Strategy;
@@ -11,18 +14,24 @@ const reporteSemanal = require('./routes/reporteSemanal');
 const aseoMaestro = require('./routes/aseo');
 const reporteMaestro = require('./routes/reporteMaestro');
 const informe = require('./routes/informe');
-const router = express();
+
+io.origins('*:*');
 
 mongoose.connect(DATABASE_URL, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
     socketTimeoutMS: 25000,
     connectTimeoutMS: 10000,
     useCreateIndex: true
 });
 
+io.on('connection', () => {
+    console.log("Conexion de un usuario");
+});
+
 router.use(bodyParser.json());
 
-router.use(cors({ origin: true }));
+router.use(cors({ origin: true, credentials: true }));
 
 router.use(passport.initialize());
 router.use(passport.session());

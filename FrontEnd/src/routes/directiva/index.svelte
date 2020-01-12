@@ -23,6 +23,10 @@
 
     }
 
+    function handleRegistroMaestro() {
+      sapper.goto('registroMaestro');
+    }
+
     function handleRegistro() {
       sapper.goto('registroSalon');
     }
@@ -137,4 +141,16 @@
           </button>
         </div>
   </div>
+  <div class="columns">
+    <div class="column">
+        <h3 class="title is-3">
+          Registrar Maestro
+        </h3>
+        <button class="button is-large is-rounded" on:click={handleRegistroMaestro}>
+            <span>
+                <i class="far fa-address-book"></i>
+            </span>
+        </button>
+      </div>
+</div>
 </div>

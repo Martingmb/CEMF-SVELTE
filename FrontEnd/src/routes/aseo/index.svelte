@@ -1,6 +1,7 @@
 <script>
     import { usuario } from "../../stores/usuario.js";
     import { maestro } from "../../stores/maestro.js";
+    import { URL } from "../../config.js";
     import { onMount } from "svelte";
     import { get } from "svelte/store";
     import * as sapper from '@sapper/app';
@@ -23,7 +24,7 @@
 
         loading = true;
 
-        let url = 'http://localhost:5000/api/postaseo';
+        let url = 'http://localhost:8080/api/postaseo';
 
         let fechaFormateada = new Date().toISOString();
 
@@ -73,7 +74,7 @@
 {#if loading}
 <div class="field is-grouped is-grouped-centered">
         <div class="control">
-            <a class="button is-large is-rounded is-loading">Loading</a>
+            <a href="." class="button is-large is-rounded is-loading">Loading</a>
         </div>
 </div>
 {:else}

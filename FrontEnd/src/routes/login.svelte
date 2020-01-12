@@ -2,6 +2,11 @@
     import { usuario } from "../stores/usuario.js";
     import { fade } from "svelte/transition";
     import * as sapper from '@sapper/app';
+    import io from "socket.io-client";
+
+    // const socket = io();
+
+    // socket.connect('http://localhost:8080');
 
 
     let username = '';
@@ -9,7 +14,7 @@
     let disabled = true;
     let loading = false;
 
-    let url = 'http://localhost:5000/api/login';
+    let url = 'http://localhost:8080/api/login';
 
     function handleClick() {
         let userParsed = username.toLowerCase();
@@ -70,7 +75,7 @@
 
         <div transition:fade class="field is-grouped is-grouped-centered">
             <div class="control">
-                <a class="button is-large is-rounded is-loading">Loading</a>
+                <a href="." class="button is-large is-rounded is-loading">Loading</a>
             </div>
         </div>
 
