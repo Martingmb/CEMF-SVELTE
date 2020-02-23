@@ -24,9 +24,9 @@
 
     onMount(() => {
         const value = get(usuario);
-        maestroID = value.id;
-        nombre = value.name;
-        clase = value.clase;
+        maestroID = value.id ? value.id : localStorage.getItem('id');
+        nombre = value.name ? value.name : localStorage.getItem('name');
+        clase = value.clase ? value.clase : localStorage.getItem('clase');
     })
 
     function handleClick() {
@@ -68,7 +68,15 @@
 
         fetch(url, {
             method: 'post',
-            body: JSON.stringify({id: data.id, clase: data.clase, capitulos: data.capitulos, visita: data.visita, asistencia: data.asistencia, fecha: data.fecha, nombre: data.nombre}),
+            body: JSON.stringify({
+                id: data.id, 
+                clase: data.clase, 
+                capitulos: data.capitulos, 
+                visita: data.visita, 
+                asistencia: data.asistencia, 
+                fecha: data.fecha, 
+                nombre: data.nombre
+                }),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

@@ -11,10 +11,20 @@
         let reporteSemanal = false;
         let reporteMaestro = false;
         let aseo = false;
+
+        const getFromLocalStorage = ({clase, id, name, title, type}) => {
+            clase = clase ? clase : localStorage.getItem('clase');
+            id = id ? id : localStorage.getItem('id');
+            name = name ? name : localStorage.getItem('name');
+            title = title ? title : localStorage.getItem('title');
+            type = type ? type : localStorage.getItem('type');
+            return {clase, id, name, title, type};
+        };
     
         onMount(() => {
-            const value = get(usuario);
-            console.log(value);
+            let value = get(usuario);
+            value = getFromLocalStorage(value);
+
             nombre = value.title + ' ' + value.name;
 
             const act = get(maestro);

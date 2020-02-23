@@ -2,12 +2,6 @@
     import { usuario } from "../stores/usuario.js";
     import { fade } from "svelte/transition";
     import * as sapper from '@sapper/app';
-    import io from "socket.io-client";
-
-    // const socket = io();
-
-    // socket.connect('http://localhost:8080');
-
 
     let username = '';
     let password = '';
@@ -15,6 +9,15 @@
     let loading = false;
 
     let url = 'http://localhost:8080/api/login';
+
+    const prepareLocalStorage = ({clase, _id, name, title, type}) => {
+        console.log('Dentro de prepareLocalStorage', {clase, _id, name, title, type});
+        localStorage.setItem('clase', clase);
+        localStorage.setItem('id', _id);
+        localStorage.setItem('name', name);
+        localStorage.setItem('title', title);
+        localStorage.setItem('type', type);
+    };
 
     function handleClick() {
         let userParsed = username.toLowerCase();
@@ -34,6 +37,8 @@
             return Response.json();
         }).then(Content => {
             console.log('Respuesta del server: ', Content);
+            console.log('cosas de content', Content.person);
+            prepareLocalStorage(Content.person);
             usuario.update(user => {
                 user.clase = Content.person.clase || 'Directiva';
                 user.id = Content.person._id;

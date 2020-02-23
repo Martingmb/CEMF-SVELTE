@@ -1,1 +1,1 @@
-exports.URL = process.env.URL || 'http://192.168.0.131:8080';
+exports.URL = 'http://localhost:8080';
